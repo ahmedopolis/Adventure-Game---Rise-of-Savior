@@ -530,5 +530,5 @@ def barrier_battle_path5(team_list):
     print_delay_dialogue(evil_leader_name, "Let's begin the games!")
     warrior_games(team_list, evil_warriors_list, evil_leader_name)
 
-
-start()
+if __name__ == "__main__":
+    start()
