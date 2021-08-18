@@ -15,10 +15,6 @@ weapon_type_list = None
 your_weapon_type = None
 name_of_trainer = None
 
-
-def print_speed(speed):
-    i = speed
-    return i
     
 
 def print_delay(message):
