@@ -1,5 +1,10 @@
+import sys
+import os
 import time
 import random
+import keyboard
+from console.screen import sc
+from rich.console import Console
 
 
 mythical_creature_list = None
@@ -11,10 +16,23 @@ your_weapon_type = None
 name_of_trainer = None
 
 
-def print_delay(message):
-    print("\n" + message)
-    time.sleep(1.5)
+def print_speed(speed):
+    i = speed
+    return i
+    
 
+def print_delay(message):
+    console = Console()
+    i = 0.05
+    for c in '\n' + message: 
+        with sc.location(0, 0):
+            console.print('Press [Backspace] to skip conversations', style='reverse')
+        if keyboard.is_pressed('backspace'): 
+            i = 0
+        sys.stdout.write(c)
+        sys.stdout.flush() # defeat buffering 
+        time.sleep(random.random() * i)
+            
 
 def print_delay_dialogue(name, message):
     print_delay(f"{name}: \"{message}\"")
@@ -58,6 +76,9 @@ def prompt_try_again(outcome_boolean):
 
 
 def start():
+    os.system("title Rise of Savior")
+    os.system('cls')
+
     print_delay("You are having a hard time falling asleep,"
                 " so you decided to go for a stroll in your neighborhood.")
     print_delay("As you are walking, you notice a large vintage-looking"
